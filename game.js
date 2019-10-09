@@ -4,12 +4,13 @@ var userClickedPattern = [];
 var gameStarted = false;
 var level = 0;
 
-$("h1").click(function(){
+$("h1").on("tap",function(){
   if (!gameStarted) {
     gameStarted = true;
     nextSequence();
   }
 });
+
 
 $(document).keypress(function() {
   if (!gameStarted) {

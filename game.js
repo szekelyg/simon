@@ -3,14 +3,14 @@ var gamePattern = [];
 var userClickedPattern = [];
 var gameStarted = false;
 var level = 0;
-
+/*
 $("body").on("tap",function(){
   if (!gameStarted) {
     gameStarted = true;
     nextSequence();
   }
   alert("tap");
-});
+});*/
 
 $(document).keypress(function() {
   if (!gameStarted) {

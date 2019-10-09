@@ -4,13 +4,13 @@ var userClickedPattern = [];
 var gameStarted = false;
 var level = 0;
 
-$("h1").on("tap",function(){
+$("body").on("tap",function(){
   if (!gameStarted) {
     gameStarted = true;
     nextSequence();
   }
+  alert("tap");
 });
-
 
 $(document).keypress(function() {
   if (!gameStarted) {
@@ -32,7 +32,7 @@ function checkAns(currentLevel) {
   if (gamePattern[currentLevel] == userClickedPattern[currentLevel]) {
     if (currentLevel == gamePattern.length - 1) {
       userFinished = true;
-      setTimeout(function() {  /*userClickedPattern = [];*/
+      setTimeout(function() {
         nextSequence();
       }, 1000);
       userClickedPattern = [];
@@ -41,7 +41,6 @@ function checkAns(currentLevel) {
     startOver();
   }
 }
-
 
 function nextSequence() {
   $("h1").text("Level " + level);

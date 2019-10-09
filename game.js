@@ -3,15 +3,8 @@ var gamePattern = [];
 var userClickedPattern = [];
 var gameStarted = false;
 var level = 0;
-/*
-$("body").on("tap",function(){
-  if (!gameStarted) {
-    gameStarted = true;
-    nextSequence();
-  }
-  alert("tap");
-});*/
 
+/* This trigger is responsible for the start of the game */
 $(document).keypress(function() {
   if (!gameStarted) {
     gameStarted = true;
@@ -19,6 +12,7 @@ $(document).keypress(function() {
   }
 });
 
+/* This trigger handles when player click on a button */
 $(".btn").click(function() {
   var userChosenColour = $(this).attr('id');
   userClickedPattern.push(userChosenColour);
@@ -28,6 +22,7 @@ $(".btn").click(function() {
   checkAns(userClickedPattern.length-1);
 });
 
+/* Here we check if the player clicked the right button */
 function checkAns(currentLevel) {
   if (gamePattern[currentLevel] == userClickedPattern[currentLevel]) {
     if (currentLevel == gamePattern.length - 1) {
@@ -42,6 +37,7 @@ function checkAns(currentLevel) {
   }
 }
 
+/* This functon create the next button flash */
 function nextSequence() {
   $("h1").text("Level " + level);
   level++;
@@ -53,11 +49,13 @@ function nextSequence() {
   console.log("gamePattern: " + gamePattern);
 }
 
+/* This funtcion is responsible for playing the right sound */
 function playSound(name) {
   var audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
 }
 
+/* Animatepress add the pressed color and removes it */
 function animatePress(currentColor) {
   $("#" + currentColor).addClass('pressed');
   setTimeout(function() {
@@ -65,6 +63,7 @@ function animatePress(currentColor) {
   }, 100);
 }
 
+/* We call startover when the game is ended */
 function startOver(){
   playSound("wrong");
   $("h1").text("Game Over Press Any Key To Restart");
